@@ -1,0 +1,143 @@
+<!DOCTYPE Html>
+<html>
+	<head>
+		<title>JAVASCRIPT CALCULATOR</title>
+		<style>
+			*	{padding:0px;
+				margin:0px;}
+				
+			.buttons{width:50px;
+					height:50px;
+					cursor:pointer;
+					font-weight:bold;
+					font-size:14px;
+					background-color:grey;
+					color:white;
+					margin:0px;
+					transition:color 0.2s ease;
+					border-radius:3px;
+					}
+			.buttons:hover{
+					color:black;
+					background:#333333;
+					}
+			
+			.foot{top:95%;
+					left:0%;
+					position:fixed;
+					border:none;
+					padding:10px;
+					box-shadow:5px 15px 10px 5px rgba(0,0,0,0.3); 
+					border-top-right-radius:20px;
+					background:#ccccff;}
+			
+			.tab{margin:7px;
+				background:#0033cc;}
+			
+			.textview{width:200px;
+			font-size:24px;
+			background:#ccccff;
+			border-radius:10px;
+			margin:5px;
+			height:30px;
+			padding:5px;
+				}
+			.calc{position:absolute;
+				top:30%;
+				left:40%;
+				border-radius:7px;
+				transform:translateX(-50%)translateY(-50%);
+				box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.3);
+				background-color:#0033cc;
+				}
+			
+			body{background-color:grey;}
+			
+		</style>
+		<script>
+			function insert(num){
+				document.form.textview.value = document.form.textview.value + num;
+			}
+		//this function is for calculating	
+			function equal(){
+				var ans = document.form.textview.value;
+				document.form.textview.value = eval(ans)
+			}
+		//this function reset the textbox
+			function clean(){
+				document.form.textview.value = "";
+			}
+		//this function deletes numbers
+			function back(){
+				var ans = document.form.textview.value;
+				document.form.textview.value = ans.substring(0,ans.length-1);
+			}
+		</script>
+	</head>
+	<body>
+		
+		<div class="calc">
+			<form name="form">
+				<input class="textview" maxlength="15" name="textview"/>
+			</form>
+			<table class="tab">
+				<tr>
+					<td><input class="buttons" type="button" value="CE" onClick="back();" /></td>
+					<td><input class="buttons" type="button" value="C" onClick="clean();" /></td>
+					<td><input class="buttons" type="button" value="/" onClick="insert('/');" /></td>
+					<td><input class="buttons" type="button" value="-" onClick="insert('-');" /></td>
+				</tr>
+				
+					<tr>
+					<td><input class="buttons" type="button" value="9" onClick="insert(9);" /></td>
+					<td><input class="buttons" type="button" value="8" onClick="insert(8);" /></td>
+					<td><input class="buttons" type="button" value="7" onClick="insert('7');" /></td>
+					<td><input class="buttons" type="button" value="+" onClick="insert('+');" /></td>
+				</tr>
+				
+				<tr>
+					<td><input class="buttons" type="button" value="6" onClick="insert(6);"/></td>
+					<td><input class="buttons" type="button" value="5" onClick="insert(5);"/></td>
+					<td><input class="buttons" type="button" value="4" onClick="insert(4);"/></td>
+					<td><input class="buttons" type="button" value="x" onClick="insert('*');"/></td>
+				</tr>
+				
+				<tr>
+					<td><input class="buttons" type="button" value="3" onClick="insert(3);"/></td>
+					<td><input class="buttons" type="button" value="2" onClick="insert(2);"/></td>
+					<td><input class="buttons" type="button" value="1" onClick="insert(1);"/></td>
+					<td rowspan="2"><input class="buttons" style="height:102px" type="button" value="=" onClick="equal();"/></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2"><input class="buttons" style="width:102px"type="button" value="0" onClick="insert(0);"/></td>
+					<td><input class="buttons" type="button" value="." onClick="insert('.');"/></td>
+				</tr>
+				
+				
+			</table>
+			<table>
+				<tr>
+					<td colspan="4" ><a href="https://www.facebook.com/TriumphChibuzo" target="_blank" style="color:black">JAVASCRIPT CALCULATOR</a></td>
+				</tr>
+			</table>
+		</div>
+		<script>
+			var pos = 0;
+			var calc = document.getElementsByClassName("calc");
+			var time = setInterval(t,2000);
+			
+			function t(){
+				if(pos = 200){
+				clearInterval(time);
+				}else{
+				pos += 1;
+				calc[0].style.bottom = pos + "px";
+				}
+			}
+		</script>
+		<footer class="foot">
+			Copyright &copy;2019
+		</footer>
+	</body>
+</html>
